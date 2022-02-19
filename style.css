@@ -1,4 +1,4 @@
-/* Declaracion de varibales */
+/*--------------------------Declaracion de varibales---------------------*/
 :root{
     --grisClaro: rgba(210,210,210,1);
     --grisOscuro: rgba(100,100,100,1);
@@ -8,8 +8,14 @@
     --azulOscuro: rgba(80,80,255,1);
     --negro: rgba(35,35,35,1);
 }
+/*-----------------------------------------------------------------------*/
+
+
+
+/*------------------Estilos para el body de la aplicacion----------------*/
 *{
     box-sizing: border-box;
+    color: var(--negro);
 }
 .Cuerpo{
     width: 100vw;
@@ -21,9 +27,11 @@
     align-items: center;
     justify-content: center;
 }
+/*-----------------------------------------------------------------------*/
 
 
-/* Estilso para la calculadora en dispositivo grande */
+
+/*-------Estilso para la calculadora en dispositivo grande---------------*/
 .calculadora{
     background-color: var(--blanco);
     width: 378px;
@@ -37,6 +45,10 @@
     border: none;
     border-radius: 10px;
 }
+/*-----------------------------------------------------------------------*/
+
+
+/*-------------------------Estilos para el display-----------------------*/
 .display{
     width: 100%;
     height: 100px;
@@ -45,13 +57,23 @@
     border-radius: 5px;
     margin-bottom: 15px;
 }
-.botones{
+/*-----------------------------------------------------------------------*/
+
+
+
+/*------Estilos para el contenedor de los botones de la calculadora------*/
+.botones-contenedor{
     width: 100%;
     height: auto;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
 }
+/* ----------------------------------------------------------------------*/
+
+
+
+/*-----------------------Estilos para los botones------------------------*/
 .columna{
     width: auto;
     height: auto;
@@ -66,9 +88,9 @@
     border: none;
     border-radius: 5px;
     font-size: 25px;
-    color: var(--negro);
     background-color: var(--grisBlanco);
 }
 .igual{
     background-color: var(--grisOscuro);
 }
+/*-----------------------------------------------------------------------*/
