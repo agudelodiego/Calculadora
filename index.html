@@ -16,45 +16,101 @@
     <meta itemprop="contact" content="agudelodiego22@gmail.com">
     <link rel="icon" type="image/x-icon" href="Iconos/calculator-solid.svg">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
     <title>Calculadora</title>
 </head>
 <body class="Cuerpo">
     <div class="calculadora">
         <div class="display">
-            <p class="display-in"></p>
+            <div class="display-div">
+                <p class="display-p">Prueba</p> 
+            </div>
+            <div class="display-div">
+                <p class="display-p">Prueba</p>
+            </div>
         </div>
         <div class="botones-contenedor">
             <div class="columna col-1">
-                <button class="boton"><i class="fas fa-percent color-icono"></i></button>
-                <button class="boton">1/x</button>
-                <button class="boton">7</button>
-                <button class="boton">4</button>
-                <button class="boton">1</button>
-                <button class="boton">±</button>
+                <div class="contenedor-boton">
+                    <i class="fas fa-percent color-icono boton"></i>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">1/x</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">7</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">4</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">1</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">±</button>
+                </div>
             </div>
             <div class="columna col-2">
-                <button class="boton" id="modo"><i class="fas fa-eye color-icono"></i></button>
-                <button class="boton">x²</button>
-                <button class="boton">8</button>
-                <button class="boton">5</button>
-                <button class="boton">2</button>
-                <button class="boton">0</button>
+                <div class="contenedor-boton">
+                    <i class="fas fa-eye color-icono boton" id="modo"></i>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">x²</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">8</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">5</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">2</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">0</button>
+                </div>
             </div>
             <div class="columna col-3">
-                <button class="boton">C</button>
-                <button class="boton">√x</i></button>
-                <button class="boton">9</button>
-                <button class="boton">6</button>
-                <button class="boton">3</button>
-                <button class="boton">,</button>
+                <div class="contenedor-boton">
+                    <button class="boton">C</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">√x</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">9</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">6</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">3</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">,</button>
+                </div>            
             </div>
             <div class="columna col-4">
-                <button class="boton"><i class="fas fa-eraser color-icono"></i></button>
-                <button class="boton"><i class="fas fa-divide color-icono"></i></button>
-                <button class="boton">X</button>
-                <button class="boton">-</button>
-                <button class="boton">+</button>
-                <button class="boton igual">=</button>
+                <div class="contenedor-boton">
+                    <i class="fas fa-eraser color-icono boton"></i>
+                </div>
+                <div class="contenedor-boton">
+                    <i class="fas fa-divide color-icono boton"></i>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">X</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">-</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton">+</button>
+                </div>
+                <div class="contenedor-boton">
+                    <button class="boton igual">=</button>
+                </div>
             </div>
         </div>
     </div>

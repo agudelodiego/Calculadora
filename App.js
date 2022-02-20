@@ -1,7 +1,7 @@
 //* CREACION DE CLASE CALCULADORA
 class Calculadora{
 
-    //Modo oscuro
+    //-----------------------------------------Modo oscuro--------------------------------------
     static cambiarModo(){
 
         let elemento = document.querySelector(".calculadora");;
@@ -47,7 +47,7 @@ class Calculadora{
             //Botones
             let botones = document.getElementsByClassName("boton");
             for(let boton of botones){
-                boton.style.backgroundColor = "rgba(230,230,250,1)";
+                boton.style.backgroundColor = "rgba(90,180,170,1)";
                 boton.style.color = "rgba(35,35,35,1)";
             }
 
@@ -62,6 +62,33 @@ class Calculadora{
             }
         }
     }
+    //------------------------------------------------------------------------------------------
+
+
+
+    //-------------------------------------Funciones de teclas----------------------------------
+    static oprimirTecla(evento){
+
+        let elemento = evento.target;
+        elemento.style.width = "72px";
+        elemento.style.height = "52px";
+
+    }
+    static soltarTecla(evento){
+
+        let elemento = evento.target;
+        elemento.style.width = "80px";
+        elemento.style.height = "60px";
+
+    }
+    //------------------------------------------------------------------------------------------
 } 
 
+
+//Añadimos funcionalidad a los botones que usaremos
 document.getElementById("modo").addEventListener("click", Calculadora.cambiarModo);
+let botones = document.getElementsByClassName("boton");
+for(let boton of botones){
+    boton.addEventListener("mousedown", Calculadora.oprimirTecla);
+    boton.addEventListener("mouseup", Calculadora.soltarTecla);
+}
