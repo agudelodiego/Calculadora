@@ -1,6 +1,17 @@
 //* CREACION DE CLASE CALCULADORA
 class Calculadora{
 
+
+    //----------------Variables globales que se mostraran en los displays-----------------------
+    static stringDown = "";
+    static stringUp = "";
+    static displayDown = document.querySelector(".down");
+    static displayUp = document.querySelector(".up");
+    //------------------------------------------------------------------------------------------
+
+
+    
+
     //-----------------------------------------Modo oscuro--------------------------------------
     static cambiarModo(){
 
@@ -82,6 +93,18 @@ class Calculadora{
 
     }
     //------------------------------------------------------------------------------------------
+
+
+
+    //-------------------------------Mostrar numero en el display-------------------------------
+    static mostarNumeros(evento){
+
+        let elemento = evento.target;
+        Calculadora.stringDown += elemento.innerHTML;
+        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+        
+    }
+    //-----------------------------------------------------------------------------------------
 } 
 
 
@@ -91,4 +114,8 @@ let botones = document.getElementsByClassName("boton");
 for(let boton of botones){
     boton.addEventListener("mousedown", Calculadora.oprimirTecla);
     boton.addEventListener("mouseup", Calculadora.soltarTecla);
+}
+let numeros = document.getElementsByClassName("numero");
+for(let numero of numeros){
+    numero.addEventListener("click", Calculadora.mostarNumeros)
 }
