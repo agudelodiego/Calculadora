@@ -5,6 +5,7 @@ class Calculadora{
     //----------------Variables globales que se mostraran en los displays-----------------------
     static stringDown = "";
     static stringUp = "";
+    static numero = 0;
     static displayDown = document.querySelector(".down");
     static displayUp = document.querySelector(".up");
     //------------------------------------------------------------------------------------------
@@ -104,6 +105,89 @@ class Calculadora{
         Calculadora.displayDown.innerHTML = Calculadora.stringDown;
         
     }
+    static mostrarOperacion(evento){
+
+        let elemento = evento.target;
+        let tipo = elemento.id;
+        let resultadoValidacion = Calculadora.validacion();
+
+        if(resultadoValidacion == false){
+
+            Calculadora.stringDown = "";
+            Calculadora.displayDown.innerHTML = "Ha ocurrido un error";
+
+        }
+        else{
+
+            switch (tipo){
+
+                case "cuadrado":
+                    let resCuadrado = resultadoValidacion**2;
+                    Calculadora.stringDown = String(resCuadrado);
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    break;
+
+                case "raizCuadrada":
+                    if(resultadoValidacion < 0){
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = "Error";
+                    }
+                    else{
+                        let resRaiz = Math.sqrt(resultadoValidacion);
+                        Calculadora.stringDown = String(resRaiz);
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    }
+                    break;
+
+                case "dividendo-1":
+                    let resDividendo = 1/resultadoValidacion;
+                    Calculadora.stringDown = String(resDividendo);
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    break;
+
+                case "negar":
+                    let resNegar = resultadoValidacion*-1;
+                    Calculadora.stringDown = String(resNegar);
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    break;
+
+                case "borrar":
+                    Calculadora.stringDown = "";
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    break;
+                
+                case "borrarTodo":
+                    Calculadora.stringDown = "";
+                    Calculadora.stringUp = "";
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                    break;
+
+            }
+            
+
+        }
+        
+    }
+    //-----------------------------------------------------------------------------------------
+
+
+
+
+    //--------------------------------Operaciones matematicas----------------------------------
+    static validacion(){
+
+        //Validamos que el usuario si haya digitado un numero y que este bien escrito
+        let string = Calculadora.stringDown;
+        let array = string.split(".");
+        if((string == "")||(array.length > 2)||(string == ".")){
+            return false;
+        }
+        else{
+            return Number(string);
+        }
+
+    }
     //-----------------------------------------------------------------------------------------
 } 
 
@@ -115,7 +199,15 @@ for(let boton of botones){
     boton.addEventListener("mousedown", Calculadora.oprimirTecla);
     boton.addEventListener("mouseup", Calculadora.soltarTecla);
 }
+
+
 let numeros = document.getElementsByClassName("numero");
 for(let numero of numeros){
-    numero.addEventListener("click", Calculadora.mostarNumeros)
+    numero.addEventListener("click", Calculadora.mostarNumeros);
+}
+
+
+let operaciones = document.getElementsByClassName("operacion");
+for(let operacion of operaciones){
+    operacion.addEventListener("click", Calculadora.mostrarOperacion);
 }
