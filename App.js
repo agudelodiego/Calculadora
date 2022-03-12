@@ -111,10 +111,26 @@ class Calculadora{
         let tipo = elemento.id;
         let resultadoValidacion = Calculadora.validacion();
 
-        if(resultadoValidacion == false){
+        if(tipo == "borrarTodo"){
+
+            Calculadora.stringDown = "";
+            Calculadora.stringUp = "";
+            Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+            Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+
+        }
+        else if(tipo == "borrar"){
+
+            Calculadora.stringDown = "";
+            Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+
+        }
+        else if(resultadoValidacion == false){
 
             Calculadora.stringDown = "";
             Calculadora.displayDown.innerHTML = "Ha ocurrido un error";
+            Calculadora.stringUp = "";
+            Calculadora.displayUp.innerHTML = Calculadora.stringUp
 
         }
         else{
@@ -151,16 +167,88 @@ class Calculadora{
                     Calculadora.displayDown.innerHTML = Calculadora.stringDown;
                     break;
 
-                case "borrar":
-                    Calculadora.stringDown = "";
-                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                case "multiplicacion":
+                    if(Calculadora.stringUp == ""){
+
+                        Calculadora.numero = resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " x";
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+
+                    }
+                    else{
+
+                        Calculadora.numero = Calculadora.numero * resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " x";
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+
+                    }
+                    break;
+
+                case "division":
+                    if(Calculadora.stringUp == ""){
+
+                        Calculadora.numero = resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " ÷";
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+
+                    }
+                    else{
+
+                        Calculadora.numero = Calculadora.numero / resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " ÷";
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+
+                    }
                     break;
                 
-                case "borrarTodo":
-                    Calculadora.stringDown = "";
-                    Calculadora.stringUp = "";
-                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
-                    Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                case "restar":
+                    if(Calculadora.stringUp == ""){
+
+                        Calculadora.numero = resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " -";
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+
+                    }
+                    else{
+
+                        Calculadora.numero = Calculadora.numero - resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " -";
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+
+                    }
+                    break;
+
+                case "sumar":
+                    if(Calculadora.stringUp == ""){
+
+                        Calculadora.numero = resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " +";
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+
+                    }
+                    else{
+
+                        Calculadora.numero = Calculadora.numero + resultadoValidacion;
+                        Calculadora.stringUp = Calculadora.numero + " +";
+                        Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                        Calculadora.stringDown = "";
+                        Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+
+                    }
                     break;
 
             }
@@ -169,12 +257,61 @@ class Calculadora{
         }
         
     }
+    static resultado(){
+        let tamaño = Calculadora.stringUp.length;
+        let operacion = Calculadora.stringUp.substr(tamaño-1,1);
+        let resultadoValidacion = Calculadora.validacion();
+        console.log(`String: ${Calculadora.stringUp}, Tamaño: ${tamaño}, Operacion: ${operacion}`);
+        if((tamaño == 0)||(Calculadora.stringDown == "")){
+            Calculadora.stringDown = "";
+            Calculadora.stringUp = "";
+            Calculadora.displayUp.innerHTML = "";
+            Calculadora.displayDown.innerHTML = "Error";
+        }
+        else{
+
+            switch (operacion){
+
+                case "+":
+                    Calculadora.numero = Calculadora.numero + resultadoValidacion;
+                    Calculadora.stringDown = String(Calculadora.numero);
+                    Calculadora.stringUp = "";
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                    break;
+                
+                case "÷":
+                    Calculadora.numero = Calculadora.numero / resultadoValidacion;
+                    Calculadora.stringDown = String(Calculadora.numero);
+                    Calculadora.stringUp = "";
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                    break;
+
+                case "x":
+                    Calculadora.numero = Calculadora.numero * resultadoValidacion;
+                    Calculadora.stringDown = String(Calculadora.numero);
+                    Calculadora.stringUp = "";
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                    break;
+
+                case "-":
+                    Calculadora.numero = Calculadora.numero - resultadoValidacion;
+                    Calculadora.stringDown = String(Calculadora.numero);
+                    Calculadora.stringUp = "";
+                    Calculadora.displayDown.innerHTML = Calculadora.stringDown;
+                    Calculadora.displayUp.innerHTML = Calculadora.stringUp;
+                    break;
+            }
+        }
+    }
     //-----------------------------------------------------------------------------------------
 
 
 
 
-    //--------------------------------Operaciones matematicas----------------------------------
+    //--------------------------------validacion matematica------------------------------------
     static validacion(){
 
         //Validamos que el usuario si haya digitado un numero y que este bien escrito
@@ -211,3 +348,6 @@ let operaciones = document.getElementsByClassName("operacion");
 for(let operacion of operaciones){
     operacion.addEventListener("click", Calculadora.mostrarOperacion);
 }
+
+
+let igualdad = document.querySelector(".igual").addEventListener("click", Calculadora.resultado);
